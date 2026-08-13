@@ -1,5 +1,6 @@
 [
   {
+    "ID": "1",
     "firstname": "Maynard",
     "lastname": "Aragon",
     "gender": "Male",
@@ -9,15 +10,17 @@
     "address": ["", "", "", ""]
   },
   {
+    "ID": "2",
     "firstname": "Karl Louie",
     "lastname": "Baquiran",
     "gender": "Male",
     "idNumber": "019-0191",
-    "birthday": "",
-    "age": "",
-    "address": ["", "", "", ""]
+    "birthday": "04/06/2006",
+    "age": "20",
+    "address": ["Bintawan", "San luis", "Solano", "Nueva Vizcaya"]
   },
   {
+    "ID": "3",
     "firstname": "Jeffrey",
     "lastname": "Belandres",
     "gender": "Male",
@@ -27,15 +30,17 @@
     "address": ["Maligaya", "Casat", "Bayombong", "Nueva Vizcaya"]
   },
   {
+    "ID": "4",
     "firstname": "Ranier",
     "lastname": "Bermudez",
     "gender": "Male",
     "idNumber": "24-10449",
-    "birthday": "",
-    "age": "",
-    "address": ["", "", "", ""]
+    "birthday": "06/29/2005",
+    "age": "21",
+    "address": ["J. Manzano St.", "Brgy. Roxas, ", "Solano", "Nueva Vizcaya"]
   },
   {
+    "ID": "5",
     "firstname": "Jaycee",
     "lastname": "Cabatic",
     "gender": "Male",
@@ -45,6 +50,7 @@
     "address": ["", "", "", ""]
   },
   {
+    "ID": "6",
     "firstname": "Ryan",
     "lastname": "Cave",
     "gender": "Male",
@@ -54,6 +60,7 @@
     "address": ["Pacursa Subdivision", "Roxas", "Solano", "Nueva Vizcaya"]
   },
   {
+    "ID": "7",
     "firstname": "Marc Ronniel",
     "lastname": "Cortes",
     "gender": "Male",
@@ -63,6 +70,7 @@
     "address": ["Purok 2 Taggapan Street", "Osmena", "Solano", "Nueva Vizcaya"]
   },
   {
+    "ID": "8",
     "firstname": "Lyn",
     "lastname": "Dela Cruz",
     "gender": "Female",
@@ -72,6 +80,7 @@
     "address": ["","Quirino","Solano","Nueva Vizcaya"]
   },
  {
+    "ID": "9",
     "firstname": "Nicole",
     "lastname": "Dela Cruz",
     "gender": "Female",
@@ -81,6 +90,7 @@
     "address": ["A. Luna Street","Roxas","Solano","Nueva Vizcaya"]
   },
   {
+    "ID": "10",
     "firstname": "John Jr.",
     "lastname": "Dogwe",
     "gender": "Male",
@@ -90,15 +100,17 @@
     "address": ["Burgos St", "Quirino", "Solano", "Nueva Vizcaya"]
   },
   {
+    "ID": "11",
     "firstname": "Kurt",
     "lastname": "Francisco",
     "gender": "Male",
     "idNumber": "22-10296",
-    "birthday": "",
-    "age": "",
-    "address": ["", "", "", ""]
+    "birthday": "03/24/2002",
+    "age": "23",
+    "address": ["silawan St", "Roxas 4", "Solano", "Nueva Vizcaya"]
   },
   {
+    "ID": "12",
     "firstname": "Xiameigh",
     "lastname": "Galera",
     "gender": "Female",
@@ -108,6 +120,7 @@
     "address": ["Purok 4 Binacao Street", "Quirino", "Solano", "Nueva Vizcaya"]
   },
   {
+    "ID": "14",
     "firstname": "Francis Robert",
     "lastname": "Gecobe",
     "gender": "Male",
@@ -117,6 +130,7 @@
     "address": ["", "", "", ""]
   },
   {
+    "ID": "15",
     "firstname": "Princes Norielle",
     "lastname": "Graganta",
     "gender": "Female",
@@ -126,6 +140,7 @@
     "address": ["Ilang-Ilang", "Quirino", "Solano", "Nueva Vizcaya"]
   },
   {
+    "ID": "16",
     "firstname": "Marielle Joy",
     "lastname": "Gulpani",
     "gender": "Female",
@@ -135,15 +150,17 @@
     "address": ["Liwliwa St.", "Bintawan Sur", "Villaverde", "Nueva Vizcaya"]
   },
   {
+    "ID": "17",
     "firstname": "James",
     "lastname": "Ilarde",
     "gender": "Male",
     "idNumber": "24-10071",
-    "birthday": "",
-    "age": "",
-    "address": ["", "", "", ""]
+    "birthday": "12/04/2003",
+    "age": "22",
+    "address": ["Bintawan Road. Purok 1", "Brgy. Lactawan", "Solano", "Nueva Vizcaya"]
   },
   {
+    "ID": "18",
     "firstname": "Trisha Joy",
     "lastname": "Lumicao",
     "gender": "Female",
@@ -153,6 +170,7 @@
     "address": ["", "Bagahabag", "Solano", "Nueva Vizcaya"]
   },
   {
+    "ID": "19",
     "firstname": "Julie Nieves",
     "lastname": "Madriaga",
     "gender": "Female",
@@ -162,6 +180,7 @@
     "address": ["35 Galamay Street", "Bonfal Proper", "Bayombong", "Nueva Vizcaya"]
   },
   {
+    "ID": "20",
     "firstname": "Karl Russel",
     "lastname": "Mariano",
     "gender": "Male",
@@ -171,6 +190,7 @@
     "address": ["Purok 2", "Maddiangat", "Quezon", "Nueva Vizcaya"]
   },
   {
+    "ID": "21",
     "firstname": "Sunshine",
     "lastname": "Nasgatan",
     "gender": "Female",
@@ -180,6 +200,7 @@
     "address": ["Sinafal", "Curifang", "Solano", "Nueva Vizcaya"]
   },
   {
+    "ID": "22",
     "firstname": "Gary Noel",
     "lastname": "Pascua",
     "gender": "Male",
@@ -189,15 +210,17 @@
     "address": ["", "", "", ""]
   },
   {
+    "ID": "23",
     "firstname": "John Ianmher",
     "lastname": "Policarpio",
     "gender": "Male",
     "idNumber": "24-10108",
-    "birthday": "",
-    "age": "",
-    "address": ["", "", "", ""]
+    "birthday": "03/20/2006",
+    "age": "20",
+    "address": ["Silawan St", "Quirino", "Solano", "Nueva Vizcaya"]
   },
   {
+    "ID": "24",
     "firstname": "Jeremy",
     "lastname": "Pontino",
     "gender": "Male",
@@ -207,6 +230,7 @@
     "address": ["Linglingay", "Pieza", "Villaverde", "Nueva Vizcaya"]
   },
   {
+    "ID": "25",
     "firstname": "Jan Angelo",
     "lastname": "Ret",
     "gender": "Male",
@@ -216,6 +240,7 @@
     "address": ["Purok 6", "Careb", "Bagabag", "Nueva Vizcaya"]
   },
   {
+    "ID": "26",
     "firstname": "Normandy",
     "lastname": "Ringpis",
     "gender": "Male",
@@ -225,6 +250,7 @@
     "address": ["Gaddang Street", "Roxas", "Solano", "Nueva Vizcaya"]
   },
  {
+    "ID": "27",
     "firstname": "Rica Jane",
     "lastname": "Salazar",
     "gender": "Female",
@@ -234,6 +260,7 @@
     "address": ["Purok 4","Quirino","Solano","Nueva Vizcaya"]
   },
   {
+    "ID": "28",
     "firstname": "Jose",
     "lastname": "Soriano V",
     "gender": "Male",
@@ -243,6 +270,7 @@
     "address": ["Pastoril Street", "Bonfal West", "Bayombong", "Nueva Vizcaya"]
   },
   {
+    "ID": "29",
     "firstname": "Adam Judd",
     "lastname": "Valdez",
     "gender": "Male",
@@ -252,6 +280,7 @@
     "address": ["Tagappan St.", "Osmena", "Solano", "Nueva Vizcaya"]
   },
   {
+    "ID": "30",
     "firstname": "Mark Joshua",
     "lastname": "Yapit",
     "gender": "Male",
