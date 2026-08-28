@@ -1,9 +1,4 @@
-// File: PokemonAPIClient.java
-// Purpose: Connect to the public PokeAPI (https://pokeapi.co), send a GET request,
-//          read the raw JSON response, and manually extract a few fields
-//          WITHOUT using any external JSON library (Gson/Jackson/etc).
-
-import java.io.BufferedReader;
+   import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
@@ -95,25 +90,6 @@ public class PokemonAPIClient {
         return response.toString();
     }
 
-    /**
-     * Manually extracts the value of a NUMERIC JSON field, e.g. turns
-     * ..."height":4,"id":25... into "4" when key = "height".
-     *
-     * How it works:
-     *  1. Build the exact text pattern to search for: "height":
-     *  2. Find where that pattern starts in the raw JSON string.
-     *  3. Walk forward character by character while we still see digits
-     *     (or a leading minus sign), collecting them.
-     *  4. Return everything collected as the extracted number (as text).
-     *
-     * NOTE: This simple approach works because "id", "height", "weight",
-     * and "base_experience" each appear only ONCE in this particular API
-     * response, at the top level of the JSON. If a field name also shows
-     * up nested elsewhere (like "name", which appears inside "abilities",
-     * "species", "types", etc.), this simple search would grab the WRONG
-     * occurrence -- that's why this program deliberately picks fields that
-     * are unique in the response.
-     */
     private static String extractNumberValue(String json, String key) {
         String searchKey = "\"" + key + "\":";
         int startIndex = json.indexOf(searchKey);
