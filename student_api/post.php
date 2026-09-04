@@ -16,69 +16,165 @@ function sendJson(array $data, int $statusCode = 200): never
     exit;
 }
 
-if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+function validateStudentData(array $data): array
+{
+    $errors = [];
+
+    if (empty($data['IDNumber']) || !is_string($data['IDNumber'])) {
+        $errors[] = 'ID number is required and must be a string.';
+    }
+
+    if (empty($data['firstname']) || !is_string($data['firstname'])) {
+        $errors[] = 'firstname is required and must be a string.';
+    }
+
+    if (empty($data['lastname']) || !is_string($data['lastname'])) {
+        $errors[] = 'lastname is required and must be a string.';
+    }
+
+    if (empty($data['age']) || !is_numeric($data['age']) || (int)$data['age'] < 1 || (int)$data['age'] > 120) {
+        $errors[] = 'Age is required and must be a positive number.';
+    }
+
+    if (empty($data['gender']) || !is_string($data['gender'])) {
+        $errors[] = 'Gender is required and must be a string.';
+    }
+
+    if (empty($data['bloodType']) || !is_string($data['bloodType'])) {
+        $errors[] = 'Blood type is required and must be a string.';
+    }
+
+    return $errors;
+}
+
+function getHighestStudentID(array $students): int
+{
+    $maxId = 0;
+
+    foreach ($students as $student) {
+        $id = (int) ($student['id'] ?? 0);
+        if ($id > $maxId) {
+            $maxId = $id;
+        }
+    }
+
+    return $maxId;
+}   
+
+
+$requestMethod = $_SERVER['REQUEST_METHOD'] ?? '';
+
+if($requestMethod !== 'POST') {
     header('Allow: POST');
+
     sendJson([
         'success' => false,
         'message' => 'Only POST requests are allowed.'
     ], 405);
 }
 
-$input = json_decode(file_get_contents('php://input'), true);
 
-if (!is_array($input)) {
+$inputContent = file_get_contents('php://input');
+
+if($inputContent === false) {
     sendJson([
         'success' => false,
-        'message' => 'Invalid JSON data.'
+        'message' => 'Unable to read input data.'
     ], 400);
 }
 
-if (empty($input['firstname']) || empty($input['lastname'])) {
+try {
+    $inputData = json_decode(
+        $inputContent, 
+        true, 
+        512, 
+        JSON_THROW_ON_ERROR);
+} catch (JsonException $e) {
     sendJson([
         'success' => false,
-        'message' => 'firstname and lastname are required.'
+        'message' => 'Invalid JSON input: ' . $e->getMessage()
+    ], 400);
+}
+
+$errors = validateStudentData($inputData);
+
+if(!empty($errors)) {
+    sendJson([
+        'success' => false,
+        'message' => 'Validation errors occurred.',
+        'errors' => $errors
     ], 400);
 }
 
 $jsonFile = __DIR__ . '/Students.json';
 
-if (!file_exists($jsonFile)) {
+if(!file_exists($jsonFile)) {
     sendJson([
         'success' => false,
-        'message' => 'Students.json not found.'
+        'message' => 'Students.json was not found.'
     ], 500);
 }
 
-$jsonData = json_decode(file_get_contents($jsonFile), true);
+$jsonContent = file_get_contents($jsonFile);
 
-if (!isset($jsonData['students'])) {
-    $jsonData['students'] = [];
+if($jsonContent === false) {
+    sendJson([
+        'success' => false,
+        'message' => 'Unable to read Students.json.'
+    ], 500);
 }
 
-$students = $jsonData['students'];
+try {
+    $studentsData = json_decode(
+        $jsonContent, 
+        true, 
+        512, 
+        JSON_THROW_ON_ERROR);
+} catch (JsonException $e) {
+    sendJson([
+        'success' => false,
+        'message' => 'Students.json contains invalid JSON.'
+    ], 500);
+}
 
-$newId = 1;
+$students = $jsonData['students'] ?? [];
 
-if (!empty($students)) {
-    $ids = array_column($students, 'ID');
-    $newId = max(array_map('intval', $ids)) + 1;
+if(!is_array($students)) {
+    sendJson([
+        'success' => false,
+        'message' => 'Invalid students data structure in Students.json.'
+    ], 500);
 }
 
 $newStudent = [
-    'ID' => (string)$newId,
-    'firstname' => trim($input['firstname']),
-    'lastname' => trim($input['lastname'])
+    'id' => getHighestStudentID($students) + 1,
+    'IDNumber' => trim($inputData['IDNumber']),
+    'firstname' => trim($inputData['firstname']),
+    'lastname' => trim($inputData['lastname']),
+    'age' => (int) $inputData['age'],
+    'gender' => trim($inputData['gender']),
+    'bloodType' => trim($inputData['bloodType'])
+
 ];
 
-$jsonData['students'][] = $newStudent;
 
-file_put_contents(
-    $jsonFile,
-    json_encode($jsonData, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES)
+$students[] = $newStudent;
+$jsonData['students'] = $students;
+
+$updatedJson = json_encode(
+    $jsonData,
+    JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES
 );
+
+if($updatedJson === false) {
+    sendJson([
+        'success' => false,
+        'message' => 'Failed to encode updated students data to JSON.'
+    ], 500);
+}
 
 sendJson([
     'success' => true,
     'message' => 'Student added successfully.',
-    'data' => $newStudent
+    'student' => $newStudent
 ], 201);
